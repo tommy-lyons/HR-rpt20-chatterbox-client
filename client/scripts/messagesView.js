@@ -11,12 +11,15 @@ var MessagesView = {
   },
 
   // we want to display the array of chat messages in the DOM
-  render: function(data) {
+  render: function(arr) {
+    _.each(arr, function(elem) {
+
+      $('#chats').prepend(MessageView.render({user: elem.username, text: elem.text}));
+    });
 
     // select $chats.show?
-    $('#chats').append('test', MessageView.render(data));
+    // $('#chats').append('test', MessageView.render(data));
     // re-render when submit
-
   }
 
 };

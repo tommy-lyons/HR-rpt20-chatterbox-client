@@ -13,11 +13,13 @@ var FormView = {
     var messageObj = {
       username: App.username,
       text: document.getElementById('message').value,
-      roomname: 'not in a room yet'
+      roomname: document.getElementById('rooms').value
     };
 
     Parse.create(messageObj);
     $('#chats').prepend(MessageView.render({user: messageObj.username, text: messageObj.text}));
+    document.getElementById('send').reset();
+
   },
 
   setStatus: function(active) {

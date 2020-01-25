@@ -13,11 +13,14 @@ var FormView = {
     var messageObj = {
       username: App.username,
       text: document.getElementById('message').value,
-      roomname: 'not in a room yet'
+      // changed this, now a new messages have selescted room for the roomnanm property
+      roomname: $('#roomlist option:selected').text()
     };
 
     Parse.create(messageObj);
     $('#chats').prepend(MessageView.render({user: messageObj.username, text: messageObj.text}));
+    document.getElementById('send').reset();
+
   },
 
   setStatus: function(active) {

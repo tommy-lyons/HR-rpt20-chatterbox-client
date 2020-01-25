@@ -25,10 +25,7 @@ var Parse = {
       type: 'GET',
       data: { order: '-createdAt' },
       contentType: 'application/json',
-      success: function(data) {
-        MessagesView.render(data.results);
-        console.log(data);
-      },
+      success: successCB,
       error: errorCB || function(error) {
         console.error('chatterbox: Failed to fetch messages', error);
       }

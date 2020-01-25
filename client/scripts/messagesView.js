@@ -13,8 +13,12 @@ var MessagesView = {
   // we want to display the array of chat messages in the DOM
   render: function(arr) {
     _.each(arr, function(elem) {
+      var check = elem.text.split('').includes('<');
 
-      $('#chats').prepend(MessageView.render({user: elem.username, text: elem.text}));
+      if (!check) { // if it doesn't start with a script
+        $('#chats').append(MessageView.render({user: elem.username, text: elem.text}));
+      }
+
     });
 
     // select $chats.show?

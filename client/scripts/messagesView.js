@@ -25,33 +25,28 @@ var MessagesView = {
 
   // lets user 'enter room' - you will only see messages with the selected roomname, or messages that are posted for that room
   filterByRoom: function(arr) {
+    var room = '';
 
-    var filterArr = function(arr, str) {
+    var filterArr = function(arr, room) {
       var filteredArr = [];
-      // check each elem in the data array
-      // compare roomname to str
-      // return filtered arr of messages that are only in that room
-      // call messages render with new arr
+      // traverse collection for messages that match the desired room
       _.each(arr, function(elem) {
-        if (elem.roomname === str) {
+        if (elem.roomname === room) {
           filteredArr.push(elem);
         }
       });
       $('#chats').empty();
       $('#chats').prepend(MessagesView.render(filteredArr));
     };
-    // find the name of the selected value
-    // filter out chats by that name
-    // render the filtered chats to the DOM
-    var str = '';
-    //when the selected option changes
+
+    // when a new room is selected
     $( 'select' ).change(function() {
       //assign the text from the selected option to the str variable
       $( 'select option:selected' ).each(function() {
-        str = $( this ).text();
+        room = $( this ).text();
       });
-      // call filterArr to rerender chats div so that we're in the right room
-      filterArr(arr, str);
+      // call filterArr and pass selected room
+      filterArr(arr, room);
     })
       .trigger( 'change' ); // ?
   },

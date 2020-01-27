@@ -23,7 +23,8 @@ var RoomsView = {
     return filteredRooms;
   },
 
-  // so when the add room button is clicked, a new room is appended to select list, and will be added as the room name in the message when it's selected.
+  // add a new room to select list, by selecting it when submitting your message,
+  // the message will submit to that room
   handleAddRoom: function() {
     var newRoom = document.getElementById('roomname').value;
     $('#rooms select').append(RoomView.render({ roomname: newRoom}));
@@ -31,11 +32,3 @@ var RoomsView = {
   }
 };
 
-
-// we need to re-scope filteredRooms, or fix that otherwise
-
-// or better, we need to figure out how to save the rooms that we add to the array.
-
-// also need to figure out how to refresh or re-render divs when we pull data
-
-// and more...

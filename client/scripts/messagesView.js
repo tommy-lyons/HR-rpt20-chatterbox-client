@@ -5,9 +5,8 @@ var MessagesView = {
 
   // empty function on the messages view object
   initialize: function() {
-    // render the messages when the page loads
-    $(document).ready(MessagesView.render);
-    // want to re-render for every submission
+
+
   },
 
   // we want to display the array of chat messages in the DOM
@@ -41,12 +40,16 @@ var MessagesView = {
 
     // when a new room is selected
     $( 'select' ).change(function() {
-      //assign the text from the selected option to the str variable
+      // assign the text from the selected option to the str variable
       $( 'select option:selected' ).each(function() {
         room = $( this ).text();
       });
       // call filterArr and pass selected room
       filterArr(arr, room);
+      // added this method call here so that when the roomnames are filtered to generate a new room
+      // the befriend functionality still works
+
+      MessagesView.befriend();
     })
       .trigger( 'change' ); // ?
   },

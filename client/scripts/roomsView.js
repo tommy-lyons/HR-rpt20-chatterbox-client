@@ -6,6 +6,7 @@ var RoomsView = {
   // added functionality to call handleAddRoom when use the add room button
   initialize: function() {
     RoomsView.$button.on('click', RoomsView.handleAddRoom);
+    MessagesView.befriend();
   },
 
   // cleans up rooms list to not include duplicates and empties.

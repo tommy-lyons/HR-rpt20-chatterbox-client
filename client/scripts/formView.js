@@ -13,7 +13,8 @@ var FormView = {
     var messageObj = {
       username: App.username,
       text: document.getElementById('message').value,
-      roomname: document.getElementById('rooms').value
+      // changed this, now a new messages have selescted room for the roomnanm property
+      roomname: $('#roomlist option:selected').text()
     };
 
     Parse.create(messageObj);

@@ -23,6 +23,7 @@ var App = {
       RoomsView.render(data.results);
       MessagesView.render(data.results);
       MessagesView.filterByRoom(data.results);
+      MessagesView.befriend();
       console.log(data);
       callback();
     });

@@ -3,9 +3,9 @@ var RoomsView = {
   $button: $('#rooms button'),
   $select: $('#rooms select'),
 
+  // added functionality to call handleAddRoom when use the add room button
   initialize: function() {
-    console.log('initialize running');
-    RoomsView.$button.on('click', RoomsView.handleClick);
+    RoomsView.$button.on('click', RoomsView.handleAddRoom);
   },
 
   // cleans up rooms list to not include duplicates and empties.
@@ -17,16 +17,18 @@ var RoomsView = {
         filteredRooms.push(RoomView.render({ roomname: elem.roomname }));
       }
     });
-
     for (var i = 0; i < filteredRooms.length; i++) {
       $('#rooms select').append(filteredRooms[i]);
     }
+    return filteredRooms;
   },
 
-  handleClick: function() {
-    console.log(filteredRooms);
-  //  document.getElementById('roomname').value
-  },
+  // so when the add room button is clicked, a new room is appended to select list, and will be added as the room name in the message when it's selected.
+  handleAddRoom: function() {
+    var newRoom = document.getElementById('roomname').value;
+    $('#rooms select').append(RoomView.render({ roomname: newRoom}));
+
+  }
 };
 
 

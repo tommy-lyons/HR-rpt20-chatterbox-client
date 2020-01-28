@@ -21,7 +21,7 @@ var App = {
     Parse.readAll((data) => {
       // examine the response from the server request:
       RoomsView.render(data.results);
-      MessagesView.render(data.results);
+      MessagesView.renderMessage(data.results);
       MessagesView.filterByRoom(data.results);
       MessagesView.befriend();
       console.log(data);

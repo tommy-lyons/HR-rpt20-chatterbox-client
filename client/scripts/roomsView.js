@@ -10,7 +10,7 @@ var RoomsView = {
   },
 
   // cleans up rooms list to not include duplicates and empties.
-  render: function(arr) {
+  renderMessage: function(arr) {
     var filteredRooms = [];
 
     _.each(arr, function(elem) {

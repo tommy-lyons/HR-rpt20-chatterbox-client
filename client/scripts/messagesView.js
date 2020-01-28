@@ -5,12 +5,10 @@ var MessagesView = {
 
   // empty function on the messages view object
   initialize: function() {
-
-
   },
 
   // we want to display the array of chat messages in the DOM
-  render: function(arr) {
+  renderMessage: function(arr) {
     _.each(arr, function(elem) {
       if (elem.text) {
         var check = elem.text.split('').includes('<');
@@ -35,7 +33,7 @@ var MessagesView = {
         }
       });
       $('#chats').empty();
-      $('#chats').prepend(MessagesView.render(filteredArr));
+      $('#chats').prepend(MessagesView.renderMessage(filteredArr));
     };
 
     // when a new room is selected
@@ -55,18 +53,12 @@ var MessagesView = {
   },
 
   befriend: function () {
-
-    // this took a bit, finally worked after calling the method AFTER other functionality in App.fetch
-    // NEXT need to apply style to all elements that have the same username as the one we click on somehow,
-    // not sure how to select by text value and pass in a variable, can do it directly with the jQuery contains()
-    // method, but it doesn't allow for passing in a variable, only string literals...not sure
     $('.username').on('click', function() {
-      var text = $(this).text();
-      console.log(text);
-      // do something with the text
+      var text = ($(this).text());
+      var name = text.substr(0, text.length - 1);
+      console.log(name);
+      $('.' + name).css('border', '13px solid red');
     });
-
   }
-
 
 };
